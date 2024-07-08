@@ -3,4 +3,5 @@
   <Job id="3" categoryId="2" deadline="" isDone="true">fdgdfg</Job>
   <Job id="5" categoryId="4" deadline="" isDone="false">fgh</Job>
   <Job id="6" categoryId="4" deadline="2024-07-10T15:50:00" isDone="false">sdf</Job>
+  <Job id="7" categoryId="6" deadline="2024-07-11T19:58:00" isDone="false">іфв</Job>
 </Jobs>

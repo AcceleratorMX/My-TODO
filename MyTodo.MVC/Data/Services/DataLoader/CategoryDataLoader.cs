@@ -9,7 +9,7 @@ public class CategoryDataLoader(IRepositorySwitcher<Category, int> categoryRepos
 {
     public async Task<IDictionary<int, Category>> LoadAsync(IEnumerable<int> keys)
     {
-        return (await categoryRepository.CurrentRepository.GetAllAsync())
+        return (await categoryRepository.CurrentStorage.GetAllAsync())
             .Where(c => keys.Contains(c.Id)).ToDictionary(c => c.Id);
     }
 }

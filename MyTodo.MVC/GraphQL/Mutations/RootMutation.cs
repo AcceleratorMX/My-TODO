@@ -18,7 +18,7 @@ public sealed class RootMutation : ObjectGraphType
             .ResolveAsync(async context =>
             {
                 var newJob = context.GetArgument<Job>("job");
-                await job.CurrentRepository.CreateAsync(newJob);
+                await job.CurrentStorage.CreateAsync(newJob);
                 return $"{newJob.Name} successfully created";
             });
 
@@ -31,9 +31,9 @@ public sealed class RootMutation : ObjectGraphType
                 var id = context.GetArgument<int>("id");
                 var isDone = context.GetArgument<bool>("isDone");
 
-                var jobToUpdate = await job.CurrentRepository.GetByIdAsync(id);
+                var jobToUpdate = await job.CurrentStorage.GetByIdAsync(id);
                 jobToUpdate.IsDone = isDone;
-                await job.CurrentRepository.UpdateAsync(jobToUpdate);
+                await job.CurrentStorage.UpdateAsync(jobToUpdate);
 
                 return $"Progress of job with id {id} successfully changed";
             });
@@ -44,7 +44,7 @@ public sealed class RootMutation : ObjectGraphType
             .ResolveAsync(async context =>
             {
                 var id = context.GetArgument<int>("id");
-                await job.CurrentRepository.DeleteAsync(id);
+                await job.CurrentStorage.DeleteAsync(id);
                 return $"Job with id {id} successfully deleted";
             });
 
@@ -54,7 +54,7 @@ public sealed class RootMutation : ObjectGraphType
             .ResolveAsync(async context =>
             {
                 var newCategory = context.GetArgument<Category>("category");
-                await category.CurrentRepository.CreateAsync(newCategory);
+                await category.CurrentStorage.CreateAsync(newCategory);
                 return $"{newCategory.Name} successfully created";
             });
 
@@ -64,7 +64,7 @@ public sealed class RootMutation : ObjectGraphType
             .ResolveAsync(async context =>
             {
                 var id = context.GetArgument<int>("id");
-                await category.CurrentRepository.DeleteAsync(id);
+                await category.CurrentStorage.DeleteAsync(id);
                 return $"Category with id {id} successfully deleted";
             });
     }

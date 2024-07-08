@@ -15,8 +15,8 @@ public class TodoController(
     {
         var model = new TodoViewModel
         {
-            CurrentRepositoryType = jobRepository.GetRepositoryType(),
-            Jobs = (await jobRepository.CurrentRepository.GetAllAsync())
+            CurrentStorageType = jobRepository.GetStorageType(),
+            Jobs = (await jobRepository.CurrentStorage.GetAllAsync())
                 .OrderByDescending(job => job.IsDone)
                 .ThenByDescending(job => job.Id)
         };
@@ -28,7 +28,7 @@ public class TodoController(
 
     private async Task<SelectList> GetCategoriesSelectList()
     {
-        var categories = (await categoryRepository.CurrentRepository.GetAllAsync())
+        var categories = (await categoryRepository.CurrentStorage.GetAllAsync())
             .Where(c => c.Id != 1);
         return new SelectList(categories, "Id", "Name");
     }
@@ -42,11 +42,11 @@ public class TodoController(
         if (string.IsNullOrEmpty(job.Name) || job.CategoryId == 0)
         {
             ViewBag.Categories = await GetCategoriesSelectList();
-            model.Jobs = await jobRepository.CurrentRepository.GetAllAsync();
+            model.Jobs = await jobRepository.CurrentStorage.GetAllAsync();
             return View(model);
         }
 
-        await jobRepository.CurrentRepository.CreateAsync(job);
+        await jobRepository.CurrentStorage.CreateAsync(job);
 
         return RedirectToAction("Todo");
     }
@@ -55,25 +55,25 @@ public class TodoController(
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ChangeProgress(int id)
     {
-        var job = await jobRepository.CurrentRepository.GetByIdAsync(id);
+        var job = await jobRepository.CurrentStorage.GetByIdAsync(id);
         if (job.IsDone) return RedirectToAction("Todo");
         job.IsDone = true;
-        await jobRepository.CurrentRepository.UpdateAsync(job);
+        await jobRepository.CurrentStorage.UpdateAsync(job);
         return RedirectToAction("Todo");
     }
 
     [HttpPost]
     public async Task<IActionResult> Delete(int id)
     {
-        await jobRepository.CurrentRepository.DeleteAsync(id);
+        await jobRepository.CurrentStorage.DeleteAsync(id);
         return RedirectToAction("Todo");
     }
 
     [HttpPost]
     [Route("todo/switch")]
-    public IActionResult Switch(string repositoryType, string? returnUrl)
+    public IActionResult Switch(string storageType, string? returnUrl)
     {
-        switch (repositoryType.ToLower())
+        switch (storageType.ToLower())
         {
             case "sql":
                 jobRepository.SwitchToSql();

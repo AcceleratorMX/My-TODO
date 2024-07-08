@@ -1,6 +1,6 @@
 namespace MyTodo.MVC.Repositories.Abstract;
 
-public enum RepositoryTypes
+public enum StorageTypes
 {
     Sql,
     Xml

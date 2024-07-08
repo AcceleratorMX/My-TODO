@@ -9,6 +9,6 @@ public class CategoryViewModel
     public string Name { get; set; } = null!;
     public int JobId { get; set; }
     public Job? Job { get; set; }
-    public RepositoryTypes CurrentRepositoryType { get; set; }
+    public StorageTypes CurrentStorageType { get; set; }
     public IEnumerable<Category> Categories { get; set; } = new List<Category>();
 }

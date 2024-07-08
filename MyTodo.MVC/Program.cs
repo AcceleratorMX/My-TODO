@@ -27,13 +27,13 @@ builder.Services.AddTransient<CategoryRepositorySql>();
 builder.Services.AddTransient<CategoryRepositoryXml>();
 
 
-builder.Services.AddSingleton<IRepositorySwitcher<Job, int>>(s => new RepositorySwitcher<Job, int>(
+builder.Services.AddSingleton<IRepositorySwitcher<Job, int>>(s => new StorageSwitcher<Job, int>(
     s.GetRequiredService<JobRepositorySql>(),
     s.GetRequiredService<JobRepositoryXml>(),
     s.GetRequiredService<IHttpContextAccessor>()
 ));
 
-builder.Services.AddSingleton<IRepositorySwitcher<Category, int>>(s => new RepositorySwitcher<Category, int>(
+builder.Services.AddSingleton<IRepositorySwitcher<Category, int>>(s => new StorageSwitcher<Category, int>(
     s.GetRequiredService<CategoryRepositorySql>(),
     s.GetRequiredService<CategoryRepositoryXml>(),
     s.GetRequiredService<IHttpContextAccessor>()

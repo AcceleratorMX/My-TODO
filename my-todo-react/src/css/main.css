@@ -16,8 +16,10 @@ body {
     background-color: var(--bg_color);
 }
 
+.header__container,
 .main__container {
-    width: 900px;
+    max-width: 900px;
+    width: 100%;
 }
 
 .main__container .nav-tabs {
@@ -51,6 +53,11 @@ body {
     border: none;
 }
 
+.select-switcher {
+    max-width: 5rem;
+    border: none;
+}
+
 input {
     color: var(--primary-text_color);
 }
@@ -80,14 +87,15 @@ input {
 }
 
 .select-category__input:hover,
+.select-switcher:hover,
 .date-time__input:hover,
+.select-switcher:focus,
 .select-category__input:focus,
 .date-time__input:focus {
     outline: none;
     box-shadow: none;
     background-color: #73B0CD;
     color: #FFF;
-
 }
 
 .plus-icon {

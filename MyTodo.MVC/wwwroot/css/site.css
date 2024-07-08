@@ -91,12 +91,12 @@ button {
 }
 
 .input-job-deadline {
-    width: 8vw;
+    width: 180px;
 }
 
 .input-job-category,
 .deadline-category-cell {
-    width: 7.5vw;
+    width: 150px;
 }
 
 .deadline-category-cell {

@@ -1,6 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,4 +13,3 @@ root.render(
         <App/>
     </Provider>
 );
-
