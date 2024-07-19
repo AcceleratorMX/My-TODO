@@ -1,0 +1,5 @@
+<Jobs>
+  <Job id="1" categoryId="3" deadline="" isDone="false">new1</Job>
+  <Job id="3" categoryId="3" deadline="2024-07-11T14:53:00Z" isDone="false">йцуйу</Job>
+  <Job id="4" categoryId="2" deadline="" isDone="false">asdd</Job>
+</Jobs>
