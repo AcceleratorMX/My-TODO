@@ -1,6 +1,15 @@
 export const XML = 'xml';
 export const SQL = 'sql';
 
+export const TAB_NAME_TODOS = 'Завдання';
+export const TAB_NAME_CATEGORIES = 'Категорії';
+
+export const EVENT_KEY_TODOS = 'todos';
+export const EVENT_KEY_CATEGORIES = 'categories';
+
+export const INPUT_FIELD_IS_REQUIRED = 'Це поле обов\'язкове!';
+export const SELECT_CATEGORY_IS_REQUIRED = 'Оберіть категорію!';
+
 export const FETCH_TODOS_REQUEST = 'FETCH_TODOS_REQUEST';
 export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
 

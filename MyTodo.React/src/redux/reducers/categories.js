@@ -1,9 +1,4 @@
-import {
-    FETCH_CATEGORIES_SUCCESS,
-    ADD_CATEGORY_SUCCESS,
-    DELETE_CATEGORY_SUCCESS,
-    ACTION_FAILURE
-} from '../constants.js';
+import {FETCH_CATEGORIES_SUCCESS, ADD_CATEGORY_SUCCESS, DELETE_CATEGORY_SUCCESS, ACTION_FAILURE} from "../constants.js";
 
 const initialState = {
     categories: [],

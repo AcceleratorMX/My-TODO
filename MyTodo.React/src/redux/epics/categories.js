@@ -1,12 +1,8 @@
-import {of} from 'rxjs';
-import {createEpic} from '../helpers';
+import {of} from "rxjs";
+import {createEpic} from "../helpers";
 import {addCategorySuccess, deleteCategorySuccess, fetchCategoriesSuccess} from "../actions/categories.js";
 import {actionFailure} from "../actions/errors.js";
-import {
-    ADD_CATEGORY_REQUEST,
-    DELETE_CATEGORY_REQUEST,
-    FETCH_CATEGORIES_REQUEST
-} from "../constants.js";
+import {ADD_CATEGORY_REQUEST, DELETE_CATEGORY_REQUEST, FETCH_CATEGORIES_REQUEST} from "../constants.js";
 
 
 export const fetchCategoriesEpic = createEpic(

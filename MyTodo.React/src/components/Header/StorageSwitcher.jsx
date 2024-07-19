@@ -12,12 +12,12 @@ const StorageSwitcher = () => {
 
     return (
         <select
-            className='form-select select-switcher'
+            className="form-select select-switcher"
             value={currentStorage}
             onChange={handleSwitchStorage}
         >
-            <option value={SQL}>SQL</option>
-            <option value={XML}>XML</option>
+            <option value={SQL}>{SQL.toUpperCase()}</option>
+            <option value={XML}>{XML.toUpperCase()}</option>
         </select>
     );
 }

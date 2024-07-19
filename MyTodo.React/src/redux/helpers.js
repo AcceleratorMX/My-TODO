@@ -2,11 +2,15 @@ import {catchError, map, switchMap} from "rxjs/operators";
 import {from} from "rxjs";
 import {ofType} from "redux-observable";
 
-export const createAction = (type) => (payload) => ({ type, payload });
+export const createAction = (type) => (payload) => ({type, payload});
 
-const GQL_API = 'https://localhost:7250/graphql';
+export const handleInputChange = (setState) => (event) => setState(event.target.value);
 
-export const fetchAll = (query, variables) => {
+const selectCurrentStorage = state => state.storage.currentStorage;
+
+const GQL_API = "https://localhost:7250/graphql";
+
+export const fetchAll = (currentStorage, query, variables) => {
     console.log('Sending request to:', GQL_API);
     console.log('Query:', query);
     console.log('Variables:', variables);
@@ -15,7 +19,7 @@ export const fetchAll = (query, variables) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Storage-Type': 'xml'
+            'Storage-Type': currentStorage
         },
         body: JSON.stringify({
             query,
@@ -26,13 +30,14 @@ export const fetchAll = (query, variables) => {
     );
 };
 
- export const createEpic = (actionType, query, getVariables, successAction, failureAction) => action$ => action$.pipe(
+export const createEpic = (actionType, query, getVariables, successAction, failureAction) => (action$, state$) => action$.pipe(
     ofType(actionType),
-     switchMap(action =>
-        from(fetchAll(query, getVariables(action)))
+    switchMap(action => {
+        const currentStorage = selectCurrentStorage(state$.value);
+        return from(fetchAll(currentStorage, query, getVariables(action)))
             .pipe(
                 map(successAction),
                 catchError(failureAction)
             )
-    )
+    })
 );

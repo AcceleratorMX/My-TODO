@@ -1,12 +1,12 @@
-import {} from '../helpers';
-import {SWITCH_STORAGE_TYPE ,XML} from "../constants.js";
+import {ACTION_FAILURE, SWITCH_STORAGE_TYPE, XML} from "../constants.js";
 
 const initialState = {
-    currentStorage: XML
+    currentStorage: XML,
+    error: null
 };
 
 const storageReducer = (state = initialState, action) => {
-    console.log("Action Received:", action); // Додано для перевірки
+    console.log("Action Received:", action);
 
     switch (action.type) {
         case SWITCH_STORAGE_TYPE:
@@ -14,10 +14,14 @@ const storageReducer = (state = initialState, action) => {
                 ...state,
                 currentStorage: action.payload
             };
+        case ACTION_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            };
         default:
             return state;
     }
 };
 
 export default storageReducer;
-export {initialState};

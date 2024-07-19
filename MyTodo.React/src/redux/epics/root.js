@@ -1,5 +1,5 @@
-import { BehaviorSubject } from 'rxjs';
-import { combineEpics } from 'redux-observable';
+import {BehaviorSubject} from "rxjs";
+import {combineEpics} from "redux-observable";
 import {addTodoEpic, deleteTodoEpic, fetchTodosEpic, updateTodoStatusEpic} from "./todos.js";
 import {mergeMap} from "rxjs/operators";
 import {addCategoryEpic, deleteCategoryEpic, fetchCategoriesEpic} from "./categories.js";

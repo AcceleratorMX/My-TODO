@@ -1,17 +1,6 @@
-import {createEpic} from '../helpers.js';
-import {
-    addTodoSuccess,
-    changeProgressSuccess,
-    deleteTodoSuccess,
-    fetchTodosSuccess
-} from "../actions/todos.js";
-
-import {
-    ADD_TODO_REQUEST,
-    CHANGE_PROGRESS_REQUEST,
-    DELETE_TODO_REQUEST,
-    FETCH_TODOS_REQUEST
-} from "../constants.js";
+import {createEpic} from "../helpers.js";
+import {addTodoSuccess, changeProgressSuccess, deleteTodoSuccess, fetchTodosSuccess} from "../actions/todos.js";
+import {ADD_TODO_REQUEST, CHANGE_PROGRESS_REQUEST, DELETE_TODO_REQUEST, FETCH_TODOS_REQUEST} from "../constants.js";
 import {of} from "rxjs";
 import {actionFailure} from "../actions/errors.js";
 
