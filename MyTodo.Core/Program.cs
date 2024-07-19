@@ -71,11 +71,14 @@ builder.Services.AddLogging(config =>
     config.AddDebug();
 });
 
+var reactClientApi = builder.Configuration["AllowedOrigins"] 
+                     ?? throw new Exception("AllowedOrigins is not valid!");
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", conf =>
     {
-        conf.WithOrigins("http://localhost:5173")
+        conf.WithOrigins(reactClientApi)
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

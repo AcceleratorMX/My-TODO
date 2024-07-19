@@ -78,6 +78,8 @@
     <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
     <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap\LICENSE" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\index-CTHiY_ga.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\assets\index-L6MSmapM.js" />
   </ItemGroup>
 
   <ItemGroup>

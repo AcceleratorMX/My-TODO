@@ -8,7 +8,7 @@ export const handleInputChange = (setState) => (event) => setState(event.target.
 
 const selectCurrentStorage = state => state.storage.currentStorage;
 
-const GQL_API = "https://localhost:7250/graphql";
+const GQL_API = import.meta.env.VITE_GQL_API;
 
 export const fetchAll = (currentStorage, query, variables) => {
     console.log('Sending request to:', GQL_API);
